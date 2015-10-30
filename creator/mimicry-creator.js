@@ -3,6 +3,18 @@ var mimicry = mimicry || {};
 mimicry.creator = (function() {
 
 
-  return {};
+  var processRawText = function(text) {
+    return text;
+  };
+
+
+  var getLanguageData = function(rawText) {
+    return processRawText(rawText);
+  };
+
+
+  return {
+    getLanguageData: getLanguageData
+  };
 
 }());

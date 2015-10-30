@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Creates a JS data object used by mimicry-composer in order to generate placeholder text mimicking any language.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minicry Language Data Creator</title>
+  <style type="text/css">
+    body { font-family: sans-serif; }
+    input, textarea, pre { font-family: monospace; }
+    #input { min-height: 120px; min-width: 360px; }
+  </style>
+</head>
+<body>
+  <h1>Minicry Language Data Creator</h1>
+  <p>Ok so this thing is currently in progress, so.. Move along folks!</p>
+  <textarea id="input" placeholder="Place raw text here (the more the better)"></textarea>
+  <pre id="output">JSON result ends up here, hopefully.</pre>
+  <button id="submit">Make it happen</button>
+  <script src="mimicry-creator.js"></script>
+  <script>
+    document.getElementById('submit').addEventListener('click', function() {
+      var input = document.getElementById('input').value;
+      document.getElementById('output').innerText = mimicry.creator.getLanguageData(input);
+    });
+  </script>
+</body>
+</html>
