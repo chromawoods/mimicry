@@ -1,0 +1,68 @@
+{
+  "wordSpec": [
+    {
+      "length": 2,
+      "prob": 20,
+      "startChars": [
+        { "char": "a", "prob": 70 },
+        { "char": "b", "prob": 10 },
+        { "char": "c", "prob": 10 },
+        { "char": "d", "prob": 10 }
+      ]
+    },
+    {
+      "length": 4,
+      "prob": 40,
+      "startChars": [
+        { "char": "a", "prob": 40 },
+        { "char": "b", "prob": 40 },
+        { "char": "c", "prob": 10 },
+        { "char": "d", "prob": 10 }
+      ]
+    },
+    {
+      "length": 7,
+      "prob": 40,
+      "startChars": [
+        { "char": "a", "prob": 10 },
+        { "char": "b", "prob": 10 },
+        { "char": "c", "prob": 70 },
+        { "char": "d", "prob": 10 }
+      ]
+    }
+  ],
+  "chars": [
+    {
+      "char": "a",
+      "next": [
+        { "char": "b", "prob": 65 },
+        { "char": "c", "prob": 25 },
+        { "char": "d", "prob": 10 }
+      ]
+    },
+    {
+      "char": "b",
+      "next": [
+        { "char": "a", "prob": 65 },
+        { "char": "c", "prob": 25 },
+        { "char": "d", "prob": 10 }
+      ]
+    },
+    {
+      "char": "c",
+      "next": [
+        { "char": "b", "prob": 65 },
+        { "char": "a", "prob": 25 },
+        { "char": "d", "prob": 10 }
+      ]
+    },
+    {
+      "char": "d",
+      "next": [
+        { "char": "b", "prob": 65 },
+        { "char": "a", "prob": 25 },
+        { "char": "d", "prob": 10 }
+      ]
+    }
+  ]
+}

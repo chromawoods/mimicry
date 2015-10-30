@@ -8,5 +8,17 @@
 </head>
 <body>
   <script src="../mimicry-composer.js"></script>
+  <script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        var p = mimicry.composer.registerLanguage(xhr.response).getParagraph(10);
+        console.log(p);
+      }
+    };
+    xhr.responseType = 'json';
+    xhr.open('GET', '../../language-data/data-temptest.json', true);
+    xhr.send(null);
+  </script>
 </body>
 </html>
