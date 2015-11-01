@@ -41,7 +41,7 @@ mimicry.composer = (function() {
 
 
   var getWord = function() {
-    var i = 0, wordData = getItem(_langSpec.wordSpec), l = wordData.length - 1,
+    var i = 0, wordData = getItem(_langSpec.wordSpec), l = wordData.wordLength - 1,
       word = getItem(wordData.startChars).char, char = word;
     for (i; i < l; i++) {
       char = getChar(_langSpec.chars, char);

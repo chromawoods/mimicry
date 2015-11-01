@@ -1,7 +1,7 @@
 {
   "wordSpec": [
     {
-      "length": 2,
+      "wordLength": 2,
       "prob": 20,
       "startChars": [
         { "char": "a", "prob": 70 },
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "length": 4,
+      "wordLength": 4,
       "prob": 40,
       "startChars": [
         { "char": "a", "prob": 40 },
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "length": 7,
+      "wordLength": 7,
       "prob": 40,
       "startChars": [
         { "char": "a", "prob": 10 },
