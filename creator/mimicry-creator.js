@@ -4,7 +4,7 @@ mimicry.creator = (function() {
 
 
   var CONSTANTS = {
-    validChars: {
+    alphabets: {
       en: 'abcdefghijklmnopqrstuvwxyz',
       se: 'abcdefghijklmnopqrstuvwxyzåäö'
     }
@@ -38,6 +38,11 @@ mimicry.creator = (function() {
   var processChar = function(char, langData, prevChar) {
 
     var charAdded = false;
+
+    /* Is this a valid character? */
+    if (_alphabet.indexOf(char) < 0) {
+      return langData;
+    }
 
     langData.chars.forEach(function(charData) {
       var nextCharAdded = false;
@@ -131,8 +136,8 @@ mimicry.creator = (function() {
   };
 
 
-  var getLanguageData = function(rawText, lang) {
-    _validChars = lang ? CONSTANTS.validChars[lang] : CONSTANTS.validChars.en;
+  var getLanguageData = function(rawText, alphabet) {
+    _alphabet = alphabet ? CONSTANTS.alphabets[lang] : CONSTANTS.alphabets.en;
     return processRawText(rawText, {
       wordSpec: [],
       chars: []
