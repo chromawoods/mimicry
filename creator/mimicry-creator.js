@@ -6,6 +6,7 @@ mimicry.creator = (function() {
   var CONSTANTS = {
     alphabets: {
       en: 'abcdefghijklmnopqrstuvwxyz',
+      fi: 'abcdefghijklmnopqrstuvwxyzäö',
       se: 'abcdefghijklmnopqrstuvwxyzåäö'
     }
   };
@@ -23,7 +24,7 @@ mimicry.creator = (function() {
   };
 
 
-  var calculateProbas = function(langData) {
+  var calculateProbabilities = function(langData) {
     langData.wordSpec = setProbabilities(langData.wordSpec);
     langData.wordSpec.forEach(function(wordSpec) {
       wordSpec.startChars = setProbabilities(wordSpec.startChars);
@@ -38,11 +39,6 @@ mimicry.creator = (function() {
   var processChar = function(char, langData, prevChar) {
 
     var charAdded = false;
-
-    /* Is this a valid character? */
-    if (_alphabet.indexOf(char) < 0) {
-      return langData;
-    }
 
     langData.chars.forEach(function(charData) {
       var nextCharAdded = false;
@@ -70,7 +66,6 @@ mimicry.creator = (function() {
     if (!charAdded) {
       langData.chars.push({
         char: char,
-        count: 1,
         next: []
       });
     }
@@ -128,17 +123,27 @@ mimicry.creator = (function() {
 
   var processRawText = function(text, langData) {
 
-    text.split(' ').forEach(function(word) {
-      langData = processWord(word, langData);
+    var filteredText = '';
+
+    text.split('').forEach(function(char) {
+      if (_alphabet.indexOf(char) >= 0 || char === ' ') {
+        filteredText += char;
+      }
     });
 
-    return calculateProbas(langData);
+    filteredText.split(' ').forEach(function(word) {
+      if (word.length) {
+        langData = processWord(word, langData);
+      }
+    });
+
+    return calculateProbabilities(langData);
   };
 
 
   var getLanguageData = function(rawText, alphabet) {
-    _alphabet = alphabet ? CONSTANTS.alphabets[lang] : CONSTANTS.alphabets.en;
-    return processRawText(rawText, {
+    _alphabet = alphabet ? CONSTANTS.alphabets[alphabet] : CONSTANTS.alphabets.en;
+    return processRawText(rawText.toLowerCase(), {
       wordSpec: [],
       chars: []
     });

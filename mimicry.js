@@ -35,8 +35,7 @@ mimicry.composer = (function() {
         break;
       }
     }
-    char = getItem(prevCharNext).char;
-    return char;
+    return prevCharNext && prevCharNext.length ? getItem(prevCharNext).char : '';
   };
 
 
@@ -54,7 +53,7 @@ mimicry.composer = (function() {
   var getParagraph = function(length) {
     var i = 0, p = '';
     for (i; i < length; i++) {
-      p += getWord(_langSpec.wordSpec) + ' ';
+      p += getWord() + ' ';
     }
     return p.trim();
   };

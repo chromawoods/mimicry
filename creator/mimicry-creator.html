@@ -8,12 +8,18 @@
   <style type="text/css">
     body { font-family: sans-serif; }
     input, textarea, pre { font-family: monospace; }
+    select { margin-bottom: 1em; }
     textarea { display: block; margin-bottom: 1em; min-height: 200px; width: 640px; max-width: 80%; }
   </style>
 </head>
 <body>
   <h1>Minicry Language Data Creator</h1>
   <p>Ok so this thing is currently in progress, so.. Move along folks!</p>
+  <select id="alphabet">
+    <option selected="selected" value="en">English</option>
+    <option value="fi">Finnish</option>
+    <option value="se">Swedish</option>
+  </select>
   <textarea id="input" placeholder="Place raw text here (the more the better)"></textarea>
   <textarea id="output">JSON result ends up here, hopefully.</textarea>
   <button id="submit">Make it happen</button>
@@ -21,8 +27,8 @@
   <script>
     document.getElementById('submit').addEventListener('click', function() {
       var input = document.getElementById('input').value;
-      //console.log(mimicry.creator.getLanguageData(input));
-      document.getElementById('output').value = JSON.stringify(mimicry.creator.getLanguageData(input), null, 2);
+      var alphabet = document.getElementById('alphabet').value;
+      document.getElementById('output').value = JSON.stringify(mimicry.creator.getLanguageData(input, alphabet), null, 2);
     });
   </script>
 </body>
