@@ -153,6 +153,7 @@ mimicry.creator = (function() {
 
 
   return {
+    getAlhpabets: function() { return CONSTANTS.alphabets; },
     getLanguageData: getLanguageData
   };
 
