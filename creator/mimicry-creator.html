@@ -41,13 +41,6 @@
       var alphabet = document.getElementById('alphabet').value;
       txtOutput.value = JSON.stringify(mimicry.creator.getLanguageData(txtInput.value, alphabet), null, 2);
       txtOutput.select();
-      try {
-        document.execCommand('copy');
-        clipboardNotice.innerHTML = 'The language data should be in your clipboard now.';
-      }
-      catch(err) {
-        clipboardNotice.innerHTML = 'Could not copy to clipboard. :(';
-      }
     });
   </script>
 </body>
