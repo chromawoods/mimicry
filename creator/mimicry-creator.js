@@ -4,6 +4,8 @@ mimicry.creator = (function() {
 
 
   var CONSTANTS = {
+    minWordLength: 2,
+    maxWordLength: 32,
     alphabets: {
       en: 'abcdefghijklmnopqrstuvwxyz',
       fi: 'abcdefghijklmnopqrstuvwxyzäö',
@@ -132,7 +134,7 @@ mimicry.creator = (function() {
     });
 
     filteredText.split(' ').forEach(function(word) {
-      if (word.length) {
+      if (word.length && word.length >= CONSTANTS.minWordLength && word.length <= CONSTANTS.maxWordLength) {
         langData = processWord(word, langData);
       }
     });
