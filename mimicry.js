@@ -2,6 +2,12 @@ var mimicry = mimicry || {};
 
 mimicry.composer = (function() {
 
+  var CONSTANTS = {
+    sentancesPerParagraph: 4,
+    sentanceMinWords: 4,
+    sentanceMaxWords: 8
+  };
+
   var _langSpec = null;
 
 
@@ -39,23 +45,37 @@ mimicry.composer = (function() {
   };
 
 
-  var getWord = function() {
+  var getWord = function(capitalize) {
     var i = 0, wordData = getItem(_langSpec.wordSpec), l = wordData.wordLength - 1,
       word = getItem(wordData.startChars).char, char = word;
     for (i; i < l; i++) {
       char = getChar(_langSpec.chars, char);
       word += char;
     }
-    return word;
+    return capitalize ? word.charAt(0).toUpperCase() + word.slice(1) : word;
   };
 
 
-  var getParagraph = function(length) {
+  var getSentance = function(numWords) {
     var i = 0, p = '';
-    for (i; i < length; i++) {
-      p += getWord() + ' ';
+    for (i; i < numWords; i++) {
+      p += getWord(i === 0) + ' ';
     }
-    return p.trim();
+    return p.trim() + '. ';
+  };
+
+
+  var getParagraphs = function(howMany) {
+    var i = 0, j, p = '', ps = [];
+    howMany = howMany || CONSTANTS.sentancesPerParagraph;
+    for (i; i < howMany; i++) {
+      p = '';
+      for (j = 0; j < CONSTANTS.sentancesPerParagraph; j++) {
+        p += getSentance(Math.floor(Math.random() * (CONSTANTS.sentanceMaxWords - CONSTANTS.sentanceMinWords + 1)) + CONSTANTS.sentanceMinWords);
+      }
+      ps.push(p.trim());
+    }
+    return ps;
   };
 
 
@@ -67,7 +87,7 @@ mimicry.composer = (function() {
 
   var _methods = {
     registerLanguage: registerLanguage,
-    getParagraph: getParagraph,
+    getParagraphs: getParagraphs,
     getWord: getWord
   };
 

@@ -12,7 +12,7 @@
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        var p = mimicry.composer.registerLanguage(xhr.response).getParagraph(100);
+        var p = mimicry.composer.registerLanguage(xhr.response).getParagraphs(3);
         console.log(p);
       }
     };
