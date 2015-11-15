@@ -7,7 +7,7 @@ mimicryApp.factory('languageData', ['$http', function($http) {
 
   return function(langId) {
     if (!cache.hasOwnProperty(langId)) {
-      cache[langId] = $http.get('language-data/data-' + langId + '.json').success;
+      cache[langId] = $http.get('../language-data/data-' + langId + '.json').success;
     }
     return cache[langId];
   };

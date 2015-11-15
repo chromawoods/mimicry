@@ -6,9 +6,11 @@ body {
   font-size: .8em;
 }
 
-body, button {
+body, button, select {
   font-family: 'Open Sans', sans-serif;
 }
+
+a { color: #888; }
 
 ul {
   margin: 0;
@@ -34,7 +36,7 @@ button:active {
 }
 
 .main, .header {
-  max-width: 80%;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -84,3 +86,7 @@ button:active {
   -o-transform: rotateX(0deg) rotateZ(0deg);
   transform: rotateX(0deg) rotateZ(0deg);
 }
+
+.data-creator em, .data-creator input, .data-creator textarea, .data-creator pre { font-family: monospace; }
+.data-creator select { margin-bottom: 1em; }
+.data-creator textarea { display: block; margin-bottom: 1em; min-height: 200px; width: 640px; max-width: 80%; }
