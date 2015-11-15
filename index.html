@@ -29,12 +29,12 @@
   </header>
   <main class="main">
 
-    <div ng-controller="userInput as ui" ng-init="getParagraphs(4)" class="user-input">
+    <div ng-controller="UserInput" ng-init="getParagraphs(4)" class="user-input">
       <button ng-click="getParagraphs(4)">Get</button>
     </div>
 
-    <ul ng-controller="paragraphList as pl">
-      <li ng-repeat="p in paragraphs" class="paragraph">{{p}}</li>
+    <ul ng-controller="ParagraphList">
+      <li ng-repeat="paragraph in paragraphs" class="paragraph">{{paragraph}}</li>
     </ul>
 
   </main>

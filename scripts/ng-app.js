@@ -1,7 +1,7 @@
 var mimicryApp = angular.module('mimicryApp', ['ngAnimate']);
 
 
-mimicryApp.factory('languageData', ['$http', function($http) {
+mimicryApp.factory('LanguageData', ['$http', function($http) {
 
   var cache = {};
 
@@ -15,12 +15,12 @@ mimicryApp.factory('languageData', ['$http', function($http) {
 }]);
 
 
-mimicryApp.controller('userInput', ['languageData', '$scope', '$rootScope', function(languageData, $scope, $rootScope) {
+mimicryApp.controller('UserInput', ['LanguageData', '$scope', '$rootScope', function(LanguageData, $scope, $rootScope) {
 
-  $scope.langId = 'fi';
+  $scope.langId = 'en';
 
   $scope.getParagraphs = function(howMany) {
-    languageData($scope.langId)(function(data) {
+    LanguageData($scope.langId)(function(data) {
       $rootScope.paragraphs = mimicry.composer.registerLanguage(data).getParagraphs(howMany);
     });
   };
@@ -28,7 +28,7 @@ mimicryApp.controller('userInput', ['languageData', '$scope', '$rootScope', func
 }]);
 
 
-mimicryApp.controller('paragraphList', ['$scope', '$rootScope', function($scope, $rootScope) {
+mimicryApp.controller('ParagraphList', ['$scope', '$rootScope', function($scope, $rootScope) {
 
   $scope.paragraphs = [];
 
