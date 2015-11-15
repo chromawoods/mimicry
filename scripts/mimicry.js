@@ -3,7 +3,7 @@ var mimicry = mimicry || {};
 mimicry.composer = (function() {
 
   var CONSTANTS = {
-    sentancesPerParagraph: 4,
+    sentancesPerParagraph: 8,
     sentanceMinWords: 4,
     sentanceMaxWords: 8
   };
